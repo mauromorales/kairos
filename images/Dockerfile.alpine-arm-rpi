@@ -88,7 +88,9 @@ RUN apk --no-cache add  \
       open-vm-tools-deploypkg \
       open-vm-tools-guestinfo \
       open-vm-tools-static \
-      open-vm-tools-vmbackup
+      open-vm-tools-vmbackup \
+      zfs \
+      zfs-lts
 
 RUN rc-update add sshd boot && \
     rc-update add connman boot  && \

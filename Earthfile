@@ -228,7 +228,9 @@ docker:
         COPY overlay/files-alpine/ /
     END
     
-    IF [ "$FLAVOR" = "alpine-arm-rpi" ]
+    IF [ "$FLAVOR" = "opensuse" ]
+        COPY overlay/files-opensuse/ /
+    ELSE IF [ "$FLAVOR" = "alpine-arm-rpi" ]
         COPY overlay/files-opensuse-arm-rpi/ /
     ELSE IF [ "$FLAVOR" = "opensuse-leap-arm-rpi" ] || [ "$FLAVOR" = "opensuse-tumbleweed-arm-rpi" ]
         COPY overlay/files-opensuse-arm-rpi/ /

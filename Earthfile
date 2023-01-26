@@ -481,11 +481,9 @@ run-qemu-datasource-tests:
     RUN PATH=$PATH:$GOPATH/bin ginkgo --label-filter "$TEST_SUITE" --fail-fast -r ./tests/
 
 run-qemu-custom-mount-tests:
-    FROM opensuse/leap
-    WORKDIR /test
-    RUN zypper in -y qemu-x86 qemu-arm qemu-tools go git
-    ARG FLAVOR
     FROM +ginkgo
+    RUN apt install -y qemu-system-x86 qemu-utils golang git
+    ARG FLAVOR
 
     COPY . .
     RUN ls -liah
@@ -502,11 +500,9 @@ run-qemu-custom-mount-tests:
     ENV CREATE_VM=true
     ENV USE_QEMU=true
     RUN pwd && ls -liah
-    RUN PATH=$PATH:$GOPATH/bin ginkgo --label-filter custom-mounts-test --fail-fast -r ./tests/
+    RUN PATH=$PATH:$GOPATH/bin ginkgo -v --label-filter custom-mounts-test --fail-fast -r ./tests/
 
 run-qemu-netboot-test:
-    FROM ubuntu
-
     FROM +ginkgo
     COPY . /test
     WORKDIR /test

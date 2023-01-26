@@ -487,11 +487,11 @@ run-qemu-custom-mount-tests:
 
     COPY . .
     RUN ls -liah
-    IF [ -e /test/build/kairos.iso ]
-        ENV ISO=/test/build/kairos.iso
+    IF [ -e /build/kairos.iso ]
+        ENV ISO=/build/kairos.iso
     ELSE
         COPY +iso/kairos.iso kairos.iso
-        ENV ISO=/test/kairos.iso
+        ENV ISO=/build/kairos.iso
     END
 
     ENV GOPATH="/go"

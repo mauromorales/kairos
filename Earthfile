@@ -493,7 +493,6 @@ run-qemu-custom-mount-tests:
 
     ENV GOPATH="/go"
 
-    ENV CLOUD_CONFIG=$CLOUD_CONFIG
     COPY . .
     RUN ls -liah
     IF [ -e /test/build/kairos.iso ]
@@ -505,9 +504,7 @@ run-qemu-custom-mount-tests:
 
     FROM +ginkgo
 
-    ENV CLOUD_INIT=/tests/tests/$CLOUD_CONFIG
-
-    RUN PATH=$PATH:$GOPATH/bin ginkgo --label-filter "$TEST_SUITE" --fail-fast -r ./tests/
+    RUN PATH=$PATH:$GOPATH/bin ginkgo --label-filter custom-mounts-test --fail-fast -r ./tests/
 
 run-qemu-netboot-test:
     FROM ubuntu

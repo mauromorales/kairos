@@ -3,6 +3,7 @@ package mos_test
 import (
 	"context"
 	"fmt"
+	"strings"
 
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
@@ -44,11 +45,11 @@ stages:
     users:
      kairos:
       passwd: "kairos"
-`, func() string {
+`, func() []string {
 				var out string
 				out, _ = Sudo("cat /run/cos/cos-layout.env")
 				fmt.Println(out)
-				return out
+				return strings.Split(out, "\n")
 			}, ContainElements(ContainSubstring("/mnt/bind1"), ContainSubstring("/mnt/ephemeral")), true)
 		})
 

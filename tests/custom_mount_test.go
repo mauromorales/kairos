@@ -2,7 +2,6 @@ package mos_test
 
 import (
 	"context"
-	"fmt"
 	"strings"
 
 	. "github.com/onsi/ginkgo/v2"
@@ -48,9 +47,8 @@ stages:
 `, func() []string {
 				var out string
 				out, _ = Sudo("cat /run/cos/cos-layout.env")
-				fmt.Println(out)
 				return strings.Split(out, "\n")
-			}, ContainElements(ContainSubstring("/mnt/bind1"), ContainSubstring("/mnt/ephemeral")), true)
+			}, ContainElements(ContainSubstring("/mnt/bind1"), ContainSubstring("/mnt/ephemeral2")), true)
 		})
 
 	})

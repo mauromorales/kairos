@@ -485,13 +485,7 @@ run-qemu-custom-mount-tests:
     WORKDIR /test
     RUN zypper in -y qemu-x86 qemu-arm qemu-tools go git
     ARG FLAVOR
-    ARG TEST_SUITE=custom-mounts-test
-    ENV FLAVOR=$FLAVOR
-    ENV SSH_PORT=60022
-    ENV CREATE_VM=true
-    ENV USE_QEMU=true
-
-    ENV GOPATH="/go"
+    FROM +ginkgo
 
     COPY . .
     RUN ls -liah
@@ -502,13 +496,18 @@ run-qemu-custom-mount-tests:
         ENV ISO=/test/kairos.iso
     END
 
-    FROM +ginkgo
-
+    ENV GOPATH="/go"
+    ARG TEST_SUITE=custom-mounts-test
+    ENV SSH_PORT=60022
+    ENV CREATE_VM=true
+    ENV USE_QEMU=true
+    RUN pwd && ls -liah
     RUN PATH=$PATH:$GOPATH/bin ginkgo --label-filter custom-mounts-test --fail-fast -r ./tests/
 
 run-qemu-netboot-test:
     FROM ubuntu
 
+    FROM +ginkgo
     COPY . /test
     WORKDIR /test
 
@@ -535,7 +534,6 @@ run-qemu-netboot-test:
     ARG TEST_SUITE=netboot-test
     ENV GOPATH="/go"
 
-    FROM +ginkgo
 
     # TODO: use --pull or something to cache the python image in Earthly
     WITH DOCKER

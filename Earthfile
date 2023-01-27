@@ -452,7 +452,7 @@ run-qemu-datasource-tests:
     ARG FLAVOR
     ARG TEST_SUITE=autoinstall-test
     ENV FLAVOR=$FLAVOR
-    ENV SSH_PORT=60022
+    ENV SSH_PORT=60023
     ENV CREATE_VM=true
     ARG CLOUD_CONFIG="./tests/assets/autoinstall.yaml"
     ENV USE_QEMU=true
@@ -496,7 +496,7 @@ run-qemu-custom-mount-tests:
 
     ENV GOPATH="/go"
     ARG TEST_SUITE=custom-mounts-test
-    ENV SSH_PORT=60022
+    ENV SSH_PORT=60024
     ENV CREATE_VM=true
     ENV USE_QEMU=true
     RUN pwd && ls -liah

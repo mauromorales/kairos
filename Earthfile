@@ -645,7 +645,6 @@ docs:
     COPY . .
     RUN git submodule update --init --recursive --depth 1
     WORKDIR ./docs
-    RUN npm run prepare
     RUN npm install --save-dev autoprefixer postcss-cli postcss
     RUN HUGO_ENV="production" hugo --gc -b "/local/" -d "public/local"
     SAVE ARTIFACT public /public AS LOCAL docs/public

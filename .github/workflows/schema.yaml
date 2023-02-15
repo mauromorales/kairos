@@ -22,10 +22,12 @@ jobs:
       - name: Generate cloud-config Schema
         run: |
           ./earthly.sh +generate-schema
-      - name: diff ls
-        run: git diff --name-only --cached | xargs ls -l 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.PAT_TOKEN }}
           base: schematest
+          commit-message: ":book: Update Schema"
+          title: ":book: Update Schema"
+          body: "Update latest cloud config schema release"
+          signoff: true

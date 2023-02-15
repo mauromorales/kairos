@@ -22,6 +22,8 @@ jobs:
           ./earthly.sh +generate-schema
       - name: Permissions
         run: ls -las docs/static/*
+      - name: Change permissions of artifact
+        run: git status | grep -oE "docs\/static\/.*" | chown root:root
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:

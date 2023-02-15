@@ -26,7 +26,6 @@ jobs:
           token: ${{ secrets.PAT_TOKEN }}
           commit-message: Add latest release cloud config schema to docs
           committer: GitHub <noreply@github.com>
-          branch: cloud-config-schema-release
           delete-branch: true
           title: ':book: Add latest release cloud clonfig schema'
           body: |

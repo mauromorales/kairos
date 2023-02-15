@@ -31,4 +31,4 @@ jobs:
           body: |
             Adds latest release cloud config schema
           add-paths: |
-            docs/static/**/*.json
+            *.json

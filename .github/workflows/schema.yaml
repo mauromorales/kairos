@@ -12,7 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          ref: master
+          ref: schematest
       - name: setup-docker
         uses: docker-practice/actions-setup-docker@master
       - name: Install Go
@@ -26,4 +26,4 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.PAT_TOKEN }}
-          base: master
+          base: schematest

@@ -21,10 +21,11 @@ jobs:
           go-version: '^1.18'
       - name: Generate cloud-config Schema
         run: |
-          echo "{}" > fake-schema.json
-          # ./earthly.sh +generate-schema
+          ./earthly.sh +generate-schema
+      - name: Chown
+        run: chown -r runner:docker docs/static/*
       - name: ls -las
-        run: ls -las
+        run: ls -las docs/static/*
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:

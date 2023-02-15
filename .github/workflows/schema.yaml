@@ -23,7 +23,7 @@ jobs:
         run: |
           ./earthly.sh +generate-schema
       - name: Chown
-        run: chown -r runner:docker docs/static/*
+        run: chown -R runner:docker docs/static/*
       - name: ls -las
         run: ls -las docs/static/*
       - name: Create Pull Request

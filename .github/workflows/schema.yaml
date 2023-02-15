@@ -24,4 +24,4 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.PAT_TOKEN }}
-          base: master
+          base: schematest

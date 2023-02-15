@@ -25,10 +25,3 @@ jobs:
         with:
           token: ${{ secrets.PAT_TOKEN }}
           branch: json-schema-release
-          commit-message: Add latest release cloud config schema to docs
-          committer: GitHub <noreply@github.com>
-          title: ':book: Add latest release cloud clonfig schema'
-          body: |
-            Adds latest release cloud config schema
-          add-paths: |
-            *.json

@@ -84,7 +84,7 @@ jobs:
           TAG=${GITHUB_REF##*/}
           echo "VERSION=$TAG" >> $GITHUB_ENV
       - name: Upload Image
-        if: startsWith(github.ref, 'refs/tags/')
+        # if: startsWith(github.ref, 'refs/tags/')
         run: |
           curl https://luet.io/install.sh | sudo sh
           sudo tar cvf build.tar build

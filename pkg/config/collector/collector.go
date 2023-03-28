@@ -275,7 +275,7 @@ func fetchRemoteConfig(url string) (*Config, error) {
 
 	if err != nil {
 		// TODO: improve logging
-		fmt.Println("WARNING: could not fetch remote config: %w", err)
+		fmt.Printf("WARNING: could not fetch remote config: %s", err)
 		return result, nil
 	}
 

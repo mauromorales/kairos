@@ -178,9 +178,15 @@ shellcheck-lint:
     RUN find . -name "*.sh" -print | xargs -r -n1 shellcheck
 
 yamllint:
+    ARG DIRS
+    ARG SOURCES
     FROM cytopia/yamllint
-    COPY . .
-    RUN yamllint .github/workflows/ overlay/
+    IF [ "$SOURCES" = "" ]
+      COPY . .
+    ELSE
+      COPY --dir $SOURCES .
+    END
+    RUN yamllint $DIRS
 
 lint:
     BUILD +golint

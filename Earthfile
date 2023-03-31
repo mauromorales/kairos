@@ -179,13 +179,7 @@ shellcheck-lint:
 
 yamllint:
     ARG DIRS
-    ARG SOURCES
     FROM cytopia/yamllint
-    IF [ "$SOURCES" = "" ]
-      COPY . .
-    ELSE
-      COPY --dir $SOURCES .
-    END
     RUN yamllint $DIRS
 
 lint:

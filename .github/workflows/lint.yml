@@ -24,3 +24,4 @@ jobs:
         with:
           yaml: true
           yaml-dirs: ".github/workflows/ overlay/"
+          go: true

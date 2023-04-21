@@ -25,3 +25,5 @@ jobs:
           yaml: true
           yaml-dirs: ".github/workflows/ overlay/"
           go: true
+          hadolint: true
+          hadolint-dir: images

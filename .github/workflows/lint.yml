@@ -28,6 +28,11 @@ jobs:
         with:
           repository: quay.io/kairos/packages
           packages: utils/earthly
+      - name: Lint
+        uses: kairos-io/kairos-linter@main
+        with:
+          yaml: true
+          yaml-dirs: ".github/workflows/ overlay/"
       - name: Run Lint checks
         run: |
           earthly +lint
